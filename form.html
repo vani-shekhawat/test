@@ -1,0 +1,147 @@
+<html>
+<head>
+	<title> HTML Form </title>
+	<style >
+		input checked{
+			 text-align: right;
+		}
+	</style>
+	<script type="text/javascript">
+		var table = document.getElementsByTagName("table");
+		var previousColor;
+		function validate(bn)
+		{
+
+			console.log(bn);
+			var x=bn.parentElement.parentElement.parentElement.parentElement;
+			console.log(x);
+			
+			previousColor=x.getAttribute("bgcolor");
+			console.log(previousColor );
+
+			x.setAttribute('bgcolor','red');
+
+
+			alert("form successfully submit");
+		}
+		function myFunction(nh)
+		{
+			var y= document.getElementById('fname');
+			nh.value=nh.value.toUpperCase();
+			nh.style.background="green";
+			nh.style.color="magenta";
+		}
+		function myFunction1(gh)
+		{
+			var currentColor= gh.getAttribute("bgcolor");
+			console.log(currentColor);
+			console.log(table[0]);
+
+			if(previousColor == undefined)
+			{
+				previousColor = table[0].getAttribute("bgcolor");
+			}
+
+
+			if(currentColor==previousColor)
+			{
+				alert("same color" );
+			}
+			else
+			{
+				alert("not matching color");
+			}
+
+
+
+
+		}
+	
+
+	</script>
+	
+</head>
+	<body>
+		<form action="http://127.0.0.1:8081/process_post" method="POST" enctype="multipart">
+		
+			<tr><table cellpadding="5" border="5" cellspacing="5" bordercolor = "green" onchange="myFunction1(this)"  bgcolor = "yellow" >
+
+				<td colspan="3"> <input type="radio" checked="checked" name="gender" value="mrs" checked>Mr.
+				<input type="radio" checked="checked" name="gender" value="mrs" checked> Mrs.
+				<input type="radio" checked="checked" name="gender" value="male" > Ms.<br></td>
+			</tr>
+			<tr>
+				<td> First name:</td>
+				<td><input type="text" name="First" id="fname"onfocus="myFunction(this)" onchange="myFunction(this)"></td>
+			</tr>
+			<tr>
+				<td> Last name:</td>
+				<td><input type="text" name="lastname"></td>
+			</tr>
+			
+			<tr>
+				<td>Mail Address1:</td>
+				<td><input type="text" name=" Mail Address1"></td>
+			</tr>
+			<tr>
+				<td>Mail Address2:</td>
+				<td><input type="text" name="Mail Address2"></td>
+			</tr>
+			
+			<tr>
+				<td>City:</td>
+				<td><input type="text" name="City"></td>
+			</tr>
+			
+			<tr>
+				<td>State:</td>
+				<td><input type="text" name="State"></td>
+			</tr>
+			
+			<tr>
+				<td>Zip:</td>
+				<td><input type="text" name="Zip"></td>
+			</tr>
+			
+			<tr>
+				<td> Upload Photo:</td>
+				<td> <input type="file" name="myFile" value="Browse"></td>
+			</tr>
+			
+			<tr>
+				<td>Email:</td>
+				<td><input type="email" name="Email"></td>
+			</tr>
+			
+			<tr>
+				<td>Mobile:</td>
+				<td> <input type="number" name="Mobile"></td>
+			</tr>
+			<br>
+			
+			<tr>
+				<td>Language Known:</td>
+				
+
+				<td><input type="checkbox" name="Language[]" value="gujrati"> Gujrati<br>
+				<input type="checkbox" name="Language[]" value="hindi"> Hindi<br>
+				<input type="checkbox" name="Language[]" value="english"> English<br>
+				<input type="checkbox" name="Language[]" value="maratdi"> Marathi<br></td>
+			</tr>
+		  
+			<tr>
+				<td>Additional Information:</td>
+				
+				<td ><input type="text" name="Additional Information"></td>
+
+			</tr>
+		
+			<tr>
+				
+				<td><input type="submit" onclick="validate(this)" onmouseover="style.color='red'" onmouseout="style.color='blue'" value="submit" >
+				 <input type="Reset"></td>
+			</tr>
+		</table>
+	</form>
+	</body>
+</html>
